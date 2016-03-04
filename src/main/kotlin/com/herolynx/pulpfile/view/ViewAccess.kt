@@ -1,19 +1,16 @@
-package com.herolynx.pulpfile.io.storage
+package com.herolynx.pulpfile.view
 
 import com.herolynx.pulpfile.model.Resource
-import com.herolynx.pulpfile.model.ResourceType
 import org.funktionale.either.Either
 import rx.Observable
 import java.io.File
 
 /**
- * Resource storage
+ *
  *
  * @author Michal Wronski
  */
-interface Storage {
-
-    fun getType(): ResourceType
+interface ViewAccess {
 
     /**
      * Get files belonging to storage
@@ -21,8 +18,6 @@ interface Storage {
      * @return resource stream
      */
     fun get(): Observable<Resource>
-
-    fun exists(resource: Resource): Either<Exception, Boolean>
 
     /**
      * Download given file resource

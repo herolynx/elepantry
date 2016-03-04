@@ -1,5 +1,7 @@
 package com.herolynx.pulpfile.io.repository
 
+import rx.Observable
+
 /**
  * Read-only access
  *
@@ -7,7 +9,7 @@ package com.herolynx.pulpfile.io.repository
  */
 interface ReadRepository<T> {
 
-    fun get(): List<T>
+    fun get(): Observable<T>
 
     fun get(id: String): T?
 

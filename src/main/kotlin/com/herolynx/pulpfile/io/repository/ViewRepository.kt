@@ -5,11 +5,11 @@ import com.herolynx.pulpfile.model.View
 import rx.Observable
 
 /**
- * View created based on some tagged resources
+ * View repository
  *
  * @author Michal Wronski
  */
-interface ResourceView {
+interface ViewRepository {
 
     fun get(view: View): Observable<Resource>
 
