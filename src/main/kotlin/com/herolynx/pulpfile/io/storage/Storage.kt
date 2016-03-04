@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.io.cloud
+package com.herolynx.pulpfile.io.storage
 
 import com.herolynx.pulpfile.model.Resource
 import org.funktionale.either.Either
@@ -6,14 +6,14 @@ import rx.Observable
 import java.io.File
 
 /**
- * Resource view
+ * Resource storage
  *
  * @author Michal Wronski
  */
-interface IOView {
+interface Storage {
 
     /**
-     * Get files belonging to given view
+     * Get files belonging to storage
      *
      * @return resource stream
      */
