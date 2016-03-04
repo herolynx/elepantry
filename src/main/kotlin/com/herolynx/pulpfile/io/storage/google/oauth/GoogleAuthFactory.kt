@@ -3,7 +3,7 @@ package com.herolynx.pulpfile.io.storage.google.oauth
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport
 import com.google.api.client.http.HttpTransport
 import com.google.api.client.json.jackson2.JacksonFactory
-import org.funktionale.either.Either
+import com.herolynx.pulpfile.func.model.Either
 
 /**
  * Factory initializes OAuth and starts auth process

@@ -1,14 +1,14 @@
 package com.herolynx.pulpfile.view
 
+import com.herolynx.pulpfile.func.collections.toMap
+import com.herolynx.pulpfile.func.model.toBoolean
+import com.herolynx.pulpfile.func.model.toOption
 import com.herolynx.pulpfile.io.repository.ViewRepository
 import com.herolynx.pulpfile.io.storage.Storage
 import com.herolynx.pulpfile.model.Resource
 import com.herolynx.pulpfile.model.ResourceType
 import com.herolynx.pulpfile.model.TaggedView
-import com.herolynx.pulpfile.utils.toBoolean
-import com.herolynx.pulpfile.utils.toMap
 import rx.Observable
-import org.funktionale.option.OptionKt.toOption
 
 /**
  * View created based on tagged resources
@@ -36,8 +36,8 @@ final class StaticView : View {
         return viewRepository
                 .get(view)
                 .filter { resource ->
-                    toOption(storageMap.get(resource.type))
-                            .map { storage -> storage!!.exists(resource).toBoolean() }
+                    storageMap.get(resource.type).toOption()
+                            .map { storage -> storage.exists(resource).toBoolean() }
                             .get()
                 }
     }

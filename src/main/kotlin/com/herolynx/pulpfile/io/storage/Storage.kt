@@ -1,8 +1,8 @@
 package com.herolynx.pulpfile.io.storage
 
+import com.herolynx.pulpfile.func.model.Either
 import com.herolynx.pulpfile.model.Resource
 import com.herolynx.pulpfile.model.ResourceType
-import org.funktionale.either.Either
 import rx.Observable
 import java.io.File
 

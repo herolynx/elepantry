@@ -4,8 +4,8 @@ import com.google.api.client.auth.oauth2.Credential
 import com.google.api.client.http.HttpTransport
 import com.google.api.client.json.JsonFactory
 import com.google.api.services.drive.Drive
+import com.herolynx.pulpfile.func.model.Either
 import com.herolynx.pulpfile.io.storage.google.drive.GoogleDrive
-import org.funktionale.either.Either
 
 /**
  * Google authorization

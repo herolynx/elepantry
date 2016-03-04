@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.utils
+package com.herolynx.pulpfile.func.collections
 
 /**
  * Convert to list

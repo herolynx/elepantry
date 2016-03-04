@@ -8,9 +8,9 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory
 import com.google.api.client.util.store.DataStoreFactory
 import com.google.api.services.drive.DriveScopes
-import com.herolynx.pulpfile.utils.map
-import com.herolynx.pulpfile.utils.toList
-import org.funktionale.either.Either
+import com.herolynx.pulpfile.func.collections.map
+import com.herolynx.pulpfile.func.collections.toList
+import com.herolynx.pulpfile.func.model.Either
 import java.io.Reader
 
 /**

@@ -30,11 +30,6 @@
 
         <!-- GENERIC -->
         <dependency>
-            <groupId>org.funktionale</groupId>
-            <artifactId>funktionale</artifactId>
-            <version>0.8</version>
-        </dependency>
-        <dependency>
             <groupId>io.reactivex</groupId>
             <artifactId>rxjava</artifactId>
             <version>1.1.1</version>

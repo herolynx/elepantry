@@ -1,6 +1,6 @@
 package com.herolynx.pulpfile.io.repository
 
-import org.funktionale.either.Either
+import com.herolynx.pulpfile.func.model.Either
 
 /**
  * Write-only access
