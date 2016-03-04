@@ -4,7 +4,7 @@ package com.herolynx.pulpfile.func.collections
  * Convert to list
  */
 fun <T> Iterable<T>.toList(): List<T> {
-    return CollectionsKt.toList(this);
+    return CollectionsKt.toList(this)
 }
 
 /**
@@ -19,7 +19,7 @@ fun <T, V> Iterable<T>.map(func: (T) -> V): Iterable<V> {
     for (element: T in this) {
         list.add(func(element))
     }
-    return list;
+    return list
 }
 
 /**
@@ -34,5 +34,5 @@ fun <K, V> Iterable<V>.toMap(key: (V) -> K): Map<K, V> {
     for (element: V in this) {
         map.put(key(element), element)
     }
-    return map;
+    return map
 }
