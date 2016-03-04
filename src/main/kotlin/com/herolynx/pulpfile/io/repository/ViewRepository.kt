@@ -1,7 +1,7 @@
 package com.herolynx.pulpfile.io.repository
 
 import com.herolynx.pulpfile.model.Resource
-import com.herolynx.pulpfile.model.View
+import com.herolynx.pulpfile.model.TaggedView
 import rx.Observable
 
 /**
@@ -11,6 +11,6 @@ import rx.Observable
  */
 interface ViewRepository {
 
-    fun get(view: View): Observable<Resource>
+    fun get(view: TaggedView): Observable<Resource>
 
 }

@@ -5,7 +5,7 @@ package com.herolynx.pulpfile.model
  *
  * @author Michal Wronski
  */
-data class View(
+data class TaggedView(
         val id: String,
         val name: String,
         val must: List<Tag>,

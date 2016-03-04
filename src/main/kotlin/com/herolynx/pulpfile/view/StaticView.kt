@@ -4,26 +4,24 @@ import com.herolynx.pulpfile.io.repository.ViewRepository
 import com.herolynx.pulpfile.io.storage.Storage
 import com.herolynx.pulpfile.model.Resource
 import com.herolynx.pulpfile.model.ResourceType
-import com.herolynx.pulpfile.model.View
+import com.herolynx.pulpfile.model.TaggedView
 import com.herolynx.pulpfile.utils.toBoolean
 import com.herolynx.pulpfile.utils.toMap
-import org.funktionale.either.Either
 import rx.Observable
-import java.io.File
 import org.funktionale.option.OptionKt.toOption
 
 /**
- * View created based on tagger repositories
+ * View created based on tagged resources
  *
  * @author Michal Wronski
  */
-final class StaticView : ViewAccess {
+final class StaticView : View {
 
     private val storageMap: Map<ResourceType, Storage>
     private val viewRepository: ViewRepository
-    private val view: View
+    private val view: TaggedView
 
-    constructor(view: View, viewRepository: ViewRepository, storages: List<Storage>) {
+    constructor(view: TaggedView, viewRepository: ViewRepository, storages: List<Storage>) {
         this.view = view
         this.viewRepository = viewRepository
         this.storageMap = storages.toMap { storage -> storage.getType() }
@@ -44,11 +42,5 @@ final class StaticView : ViewAccess {
                 }
     }
 
-    override fun download(id: String): Either<Exception, File?> {
-        throw UnsupportedOperationException()
-    }
 
-    override fun upload(f: File): Either<Exception, Boolean> {
-        throw UnsupportedOperationException()
-    }
 }
