@@ -1,4 +1,4 @@
-package com.herolynx.barefoot.model
+package com.herolynx.pulpfile.model
 
 /**
  * Any resource that can be tagged

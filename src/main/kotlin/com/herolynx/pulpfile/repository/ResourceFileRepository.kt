@@ -1,4 +1,4 @@
-package com.herolynx.barefoot.repository
+package com.herolynx.pulpfile.repository
 
 import org.funktionale.either.Either
 import java.io.File
