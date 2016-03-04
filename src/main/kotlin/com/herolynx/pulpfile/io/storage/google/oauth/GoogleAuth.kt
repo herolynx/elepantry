@@ -43,7 +43,7 @@ final class GoogleAuth {
                             httpTransport,
                             jsonFactory,
                             GoogleClientSecrets.load(jsonFactory, clientSecrets),
-                            driverScope.map { scope -> scope.toString() }.toList()
+                            driverScope.map { it.toString() }.toList()
                     )
                     .setDataStoreFactory(dataStoreFactory)
                     .setAccessType("offline")

@@ -24,7 +24,7 @@ final class StaticView : View {
     constructor(view: TaggedView, viewRepository: ViewRepository, storages: List<Storage>) {
         this.view = view
         this.viewRepository = viewRepository
-        this.storageMap = storages.toMap { storage -> storage.getType() }
+        this.storageMap = storages.toMap { it.getType() }
     }
 
     /**
