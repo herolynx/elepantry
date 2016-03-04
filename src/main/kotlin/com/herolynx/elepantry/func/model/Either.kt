@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.func.model
+package com.herolynx.elepantry.func.model
 
 sealed class Either<out L, out R> {
 

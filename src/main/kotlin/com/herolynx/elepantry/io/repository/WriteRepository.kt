@@ -1,6 +1,6 @@
-package com.herolynx.pulpfile.io.repository
+package com.herolynx.elepantry.io.repository
 
-import com.herolynx.pulpfile.func.model.Either
+import com.herolynx.elepantry.func.model.Either
 
 /**
  * Write-only access

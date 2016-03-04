@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.model
+package com.herolynx.elepantry.model
 
 /**
  * Source where resource is stored

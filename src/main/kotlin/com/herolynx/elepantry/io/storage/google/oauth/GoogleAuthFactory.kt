@@ -1,9 +1,9 @@
-package com.herolynx.pulpfile.io.storage.google.oauth
+package com.herolynx.elepantry.io.storage.google.oauth
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport
 import com.google.api.client.http.HttpTransport
 import com.google.api.client.json.jackson2.JacksonFactory
-import com.herolynx.pulpfile.func.model.Either
+import com.herolynx.elepantry.func.model.Either
 
 /**
  * Factory initializes OAuth and starts auth process

@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.io.storage.google.oauth
+package com.herolynx.elepantry.io.storage.google.oauth
 
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -8,9 +8,9 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory
 import com.google.api.client.util.store.DataStoreFactory
 import com.google.api.services.drive.DriveScopes
-import com.herolynx.pulpfile.func.collections.map
-import com.herolynx.pulpfile.func.collections.toList
-import com.herolynx.pulpfile.func.model.Either
+import com.herolynx.elepantry.func.collections.map
+import com.herolynx.elepantry.func.collections.toList
+import com.herolynx.elepantry.func.model.Either
 import java.io.Reader
 
 /**

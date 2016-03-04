@@ -1,7 +1,7 @@
-package com.herolynx.pulpfile.io.repository
+package com.herolynx.elepantry.io.repository
 
-import com.herolynx.pulpfile.model.Resource
-import com.herolynx.pulpfile.model.TaggedView
+import com.herolynx.elepantry.model.Resource
+import com.herolynx.elepantry.model.TaggedView
 import rx.Observable
 
 /**

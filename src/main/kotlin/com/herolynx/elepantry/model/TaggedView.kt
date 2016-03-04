@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.model
+package com.herolynx.elepantry.model
 
 /**
  * Resource perspective based on chosen tags

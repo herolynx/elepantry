@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.model
+package com.herolynx.elepantry.model
 
 /**
  * Meta-info

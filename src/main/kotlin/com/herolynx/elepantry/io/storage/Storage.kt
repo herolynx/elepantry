@@ -1,8 +1,8 @@
-package com.herolynx.pulpfile.io.storage
+package com.herolynx.elepantry.io.storage
 
-import com.herolynx.pulpfile.func.model.Either
-import com.herolynx.pulpfile.model.Resource
-import com.herolynx.pulpfile.model.ResourceType
+import com.herolynx.elepantry.func.model.Either
+import com.herolynx.elepantry.model.Resource
+import com.herolynx.elepantry.model.ResourceType
 import rx.Observable
 import java.io.File
 

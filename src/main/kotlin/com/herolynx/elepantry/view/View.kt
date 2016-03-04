@@ -1,6 +1,6 @@
-package com.herolynx.pulpfile.view
+package com.herolynx.elepantry.view
 
-import com.herolynx.pulpfile.model.Resource
+import com.herolynx.elepantry.model.Resource
 import rx.Observable
 
 /**

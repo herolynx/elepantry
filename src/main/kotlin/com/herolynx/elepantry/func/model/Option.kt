@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.func.model
+package com.herolynx.elepantry.func.model
 
 import java.util.*
 

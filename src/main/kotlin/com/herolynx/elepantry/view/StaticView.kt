@@ -1,13 +1,13 @@
-package com.herolynx.pulpfile.view
+package com.herolynx.elepantry.view
 
-import com.herolynx.pulpfile.func.collections.toMap
-import com.herolynx.pulpfile.func.model.toBoolean
-import com.herolynx.pulpfile.func.model.toOption
-import com.herolynx.pulpfile.io.repository.ViewRepository
-import com.herolynx.pulpfile.io.storage.Storage
-import com.herolynx.pulpfile.model.Resource
-import com.herolynx.pulpfile.model.ResourceType
-import com.herolynx.pulpfile.model.TaggedView
+import com.herolynx.elepantry.func.collections.toMap
+import com.herolynx.elepantry.func.model.toBoolean
+import com.herolynx.elepantry.func.model.toOption
+import com.herolynx.elepantry.io.repository.ViewRepository
+import com.herolynx.elepantry.io.storage.Storage
+import com.herolynx.elepantry.model.Resource
+import com.herolynx.elepantry.model.ResourceType
+import com.herolynx.elepantry.model.TaggedView
 import rx.Observable
 
 /**

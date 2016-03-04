@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.io.repository
+package com.herolynx.elepantry.io.repository
 
 import rx.Observable
 

@@ -1,11 +1,11 @@
-package com.herolynx.pulpfile.io.storage.google.oauth
+package com.herolynx.elepantry.io.storage.google.oauth
 
 import com.google.api.client.auth.oauth2.Credential
 import com.google.api.client.http.HttpTransport
 import com.google.api.client.json.JsonFactory
 import com.google.api.services.drive.Drive
-import com.herolynx.pulpfile.func.model.Either
-import com.herolynx.pulpfile.io.storage.google.drive.GoogleDrive
+import com.herolynx.elepantry.func.model.Either
+import com.herolynx.elepantry.io.storage.google.drive.GoogleDrive
 
 /**
  * Google authorization

@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.io.storage.google.drive
+package com.herolynx.elepantry.io.storage.google.drive
 
 import com.google.api.services.drive.Drive;
 
