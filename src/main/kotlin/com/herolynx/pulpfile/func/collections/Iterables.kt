@@ -1,10 +1,16 @@
 package com.herolynx.pulpfile.func.collections
 
+import java.util.*
+
 /**
  * Convert to list
  */
 fun <T> Iterable<T>.toList(): List<T> {
-    return CollectionsKt.toList(this)
+    val list = ArrayList<T>()
+    for (t: T in this) {
+        list.add(t)
+    }
+    return list
 }
 
 /**
@@ -15,7 +21,7 @@ fun <T> Iterable<T>.toList(): List<T> {
  * @param <V> type of output list
  */
 fun <T, V> Iterable<T>.map(func: (T) -> V): Iterable<V> {
-    val list = CollectionsKt.mutableListOf<V>()
+    val list = ArrayList<V>()
     for (element: T in this) {
         list.add(func(element))
     }
@@ -30,7 +36,7 @@ fun <T, V> Iterable<T>.map(func: (T) -> V): Iterable<V> {
  * @param <V> type of value
  */
 fun <K, V> Iterable<V>.toMap(key: (V) -> K): Map<K, V> {
-    val map = MapsKt.mutableMapOf<K, V>()
+    val map = HashMap<K, V>()
     for (element: V in this) {
         map.put(key(element), element)
     }
