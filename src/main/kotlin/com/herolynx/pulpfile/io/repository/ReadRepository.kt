@@ -1,4 +1,4 @@
-package com.herolynx.pulpfile.repository
+package com.herolynx.pulpfile.io.repository
 
 /**
  * Read-only access
