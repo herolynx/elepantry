@@ -1,4 +1,4 @@
-package com.herolynx.elepantry.func.model
+package com.herolynx.elepantry.func.model.option
 
 import java.util.*
 

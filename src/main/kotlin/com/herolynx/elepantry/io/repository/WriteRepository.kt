@@ -1,6 +1,6 @@
 package com.herolynx.elepantry.io.repository
 
-import com.herolynx.elepantry.func.model.Either
+import com.herolynx.elepantry.func.model.either.Either
 
 /**
  * Write-only access

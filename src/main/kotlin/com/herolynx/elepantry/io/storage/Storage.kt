@@ -1,6 +1,6 @@
 package com.herolynx.elepantry.io.storage
 
-import com.herolynx.elepantry.func.model.Either
+import com.herolynx.elepantry.func.model.either.Either
 import com.herolynx.elepantry.model.Resource
 import com.herolynx.elepantry.model.ResourceType
 import rx.Observable

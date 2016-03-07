@@ -10,7 +10,7 @@ import com.google.api.client.util.store.DataStoreFactory
 import com.google.api.services.drive.DriveScopes
 import com.herolynx.elepantry.func.collections.map
 import com.herolynx.elepantry.func.collections.toList
-import com.herolynx.elepantry.func.model.Either
+import com.herolynx.elepantry.func.model.either.Either
 import java.io.Reader
 
 /**
