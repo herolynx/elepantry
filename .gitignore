@@ -8,3 +8,4 @@ app/vendor
 test/scripts/
 .bowerrc
 jest_preprocess_cache
+coverage
