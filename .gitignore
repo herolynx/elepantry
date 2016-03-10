@@ -9,3 +9,4 @@ test/scripts/
 .bowerrc
 jest_preprocess_cache
 coverage
+app/styles/*.css

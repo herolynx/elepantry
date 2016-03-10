@@ -82,15 +82,12 @@ gulp.task('scripts', function() {
   }
 });
 
-gulp.task('compass', function() {
-  var dev = env === 'dev';
-  return gulp.src('app/styles/**/*.scss')
-    .pipe($.plumber())
-    .pipe($.if(dev, $.cached('compass')))
-    .pipe($.compass({
-      css: '.tmp/styles',
-      sass: 'app/styles'
-    }));
+gulp.task('less', function () {
+  return gulp.src('app/styles/**/*.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('app/styles'));
 });
 
 gulp.task('imagemin', function() {
@@ -162,21 +159,21 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('serve', function() {
-  runSequence('clean:dev', ['scripts', 'compass']);
+  runSequence('clean:dev', ['scripts', 'less']);
   gulp.watch('app/*.html');
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/scripts/**/*.jsx', ['scripts']);
-  gulp.watch('app/styles/**/*.scss', ['compass'])
+  gulp.watch('app/styles/**/*.less', ['less'])
     .on('change', function(event) {
       if (event.type === 'deleted') {
-        delete $.cached.caches['compass'][event.path];
+        delete $.cached.caches['less'][event.path];
       }
     });
 });
 
 gulp.task('build', function() {
   env = 'prod';
-  runSequence(['clean:dev', 'clean:dist'], ['scripts', 'compass', 'imagemin'],
+  runSequence(['clean:dev', 'clean:dist'], ['scripts', 'less', 'imagemin'],
     'bundle', 'copy');
 });
 
