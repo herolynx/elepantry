@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CurrentUserBadge from '../security/current-user-badge';
+
 export default class ViewsMenu extends React.Component {
 
   constructor(props) {
@@ -12,19 +14,7 @@ export default class ViewsMenu extends React.Component {
         <button className="hamburger hamburger--htx">
           <span>toggle menu</span>
         </button>
-        <div className="row user">
-          <div className="images">
-            <img src="images/sample-men.jpg" alt="Mateusz Kowalski"/></div>
-          <div className="name">
-            Mateusz<br/>
-            Kowalski
-          </div>
-          <div className="settings">
-            <a href="#">
-              <i className="fa fa-cog"></i>
-            </a>
-          </div>
-        </div>
+        <CurrentUserBadge/>
         <div className="row add">
           <a href="#" className="add-view">
             <i className="fa fa-plus"></i>Dodaj widok</a>
