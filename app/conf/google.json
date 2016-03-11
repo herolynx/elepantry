@@ -1,0 +1,13 @@
+{
+  "clientId": "716435782959-cc8t93acicns9qhj0at3a4o8e6cplgvr.apps.googleusercontent.com",
+  "apiKey": "AIzaSyDOGYQt1FlhnzIkcP-1c6EsMWUO5EF2Tq4",
+  "scope": [
+    "https://www.googleapis.com/auth/plus.me",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/drive"
+  ],
+  "clients": [
+    { "name": "plus", "version": "v1" }
+  ]
+}
