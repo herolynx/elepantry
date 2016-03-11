@@ -1,121 +1,35 @@
 import React from 'react';
 
-export default class ResourceView extends React.Component {
+import GoogleDrive from '../../domain/storage/google-drive-store';
+import File from './file';
 
-  constructor(props) {
-    super(props);
-  }
+let resourceView = React.createClass({
 
-  render () {
-    return(
+  getInitialState: function() {
+    return {
+      googleDrive: []
+    };
+  },
+
+  componentDidMount: function() {
+    console.debug('Resource view - loading list of files...');
+    GoogleDrive.list().then(files => {
+      console.debug('Google drive files received - size: ', files.length);
+      this.setState({googleDrive: files});
+    });
+  },
+
+  render: function() {
+    return (
       <div id="files" className="list">
-        <div className="file">
-          <a href="#" className="open_navigation_file"></a>
-          <div className="icon">
-            <span className="cloud dropbox">
-              <i className="fa fa-dropbox"></i>
-              <i className="info fa fa-info"></i>
-            </span>
-            <span className="file-type">
-              <i className="fa fa-file-word-o"></i>
-            </span>
-          </div>
-          <div className="describe">
-            <div>
-              Władca Pierścieni: Dwie wieże
-            </div>
-          </div>
-        </div>
-        <div className="file">
-          <a href="#" className="open_navigation_file"></a>
-          <div className="icon">
-            <span className="cloud google">
-              <i className="fa fa-google"></i>
-              <i className="info fa fa-info"></i>
-            </span>
-            <span className="file-type">
-              <i className="fa fa-file-pdf-o"></i>
-            </span>
-          </div>
-          <div className="describe">
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis imperdiet mauris.
-              <span>(rozmiar: 20 mb)</span>
-            </div>
-          </div>
-        </div>
-        <div className="file">
-          <a href="#" className="open_navigation_file"></a>
-          <div className="icon">
-            <span className="cloud dropbox">
-              <i className="fa fa-dropbox"></i>
-              <i className="info fa fa-info"></i>
-            </span>
-            <span className="file-type">
-              <i className="fa fa-file-word-o"></i>
-            </span>
-          </div>
-          <div className="describe">
-            <div>
-              Władca Pierścieni: Dwie wieże
-              <span>(rozmiar: 123 kb)</span>
-            </div>
-          </div>
-        </div>
-        <div className="file">
-          <a href="#" className="open_navigation_file"></a>
-          <div className="icon">
-            <span className="cloud google">
-              <i className="fa fa-google"></i>
-              <i className="info fa fa-info"></i>
-            </span>
-            <span className="file-type">
-              <i className="fa fa-file-word-o"></i>
-            </span>
-          </div>
-          <div className="describe">
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis imperdiet mauris.
-              <span>(rozmiar: 10 mb)</span>
-            </div>
-          </div>
-        </div>
-        <div className="file">
-          <a href="#" className="open_navigation_file"></a>
-          <div className="icon">
-            <span className="cloud dropbox">
-              <i className="fa fa-dropbox"></i>
-              <i className="info fa fa-info"></i>
-            </span>
-            <span className="file-type">
-              <i className="fa fa-file-word-o"></i>
-            </span>
-          </div>
-          <div className="describe">
-            <div>
-              Władca Pierścieni: Dwie wieże
-            </div>
-          </div>
-        </div>
-        <div className="file">
-          <a href="#" className="open_navigation_file"></a>
-          <div className="icon">
-            <span className="cloud google">
-              <i className="fa fa-google"></i>
-              <i className="info fa fa-info"></i>
-            </span>
-            <span className="file-type">
-              <i className="fa fa-file-word-o"></i>
-            </span>
-          </div>
-          <div className="describe">
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis imperdiet mauris.
-            </div>
-          </div>
-        </div>
+        {this.state.googleDrive.map(googleFile => {
+          return <File googleFile={googleFile}/>;
+        })}
+
       </div>
     );
   }
 
-}
+});
+
+export default resourceView;
