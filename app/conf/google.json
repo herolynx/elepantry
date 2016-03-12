@@ -7,7 +7,11 @@
     "https://www.googleapis.com/auth/userinfo.profile",
     "https://www.googleapis.com/auth/drive"
   ],
-  "clients": [
-    { "name": "plus", "version": "v1" }
-  ]
+  "clients": [{
+    "name": "plus",
+    "version": "v1"
+  }, {
+    "name": "drive",
+    "version": "v2"
+  }]
 }
