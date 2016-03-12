@@ -189,22 +189,25 @@
 		</div>
 	</section>
 
-
-
 	<section id="main-content">
 		<div id="top-bar">
 			<div class="content">
+				<a href="#" class="logo" title="Elepantry">
+					<img src="images/logo-white.png" alt="Elepantry">
+				</a>
 				<div class="search">
-					<div>
-						<input placeholder="Szukaj">
+					<div class="select">
+						<div>
+							<input placeholder="Szukaj">
+						</div>
+						<div >
+							<select>
+								<option value="1">Tagi</option>
+								<option value="2">Pliki</option>
+							</select>
+						</div>
 					</div>
-					<div>
-						<select>
-							<option value="1">Tagi</option>
-							<option value="2">Pliki</option>
-						</select>
-					</div>
-					<div>
+					<div class="button">
 						<button type="submit">
 							<i class="fa fa-search"></i>
 						</button>
@@ -252,8 +255,7 @@
 				<div class="file">
 					<a href="#" class="open_navigation_file"></a>
 					<div class="icon">
-						<span class="cloud dropbox"><i class="fa fa-dropbox"></i><i class="info fa fa-info"></i></span>
-						<span class="file-type"><i class="fa fa-file-word-o"></i></span>
+						<span class="cloud dropbox"><i class="fa fa-dropbox"></i></span>
 					</div>
 					<div class="describe">
 						<div>
@@ -264,8 +266,7 @@
 				<div class="file">
 					<a href="#" class="open_navigation_file"></a>
 					<div class="icon">
-						<span class="cloud google"><i class="fa fa-google"></i><i class="info fa fa-info"></i></span>
-						<span class="file-type"><i class="fa fa-file-pdf-o"></i></span>
+						<span class="cloud google"><i class="fa fa-google"></i></span>
 					</div>
 					<div class="describe">
 						<div>
@@ -276,8 +277,7 @@
 				<div class="file">
 					<a href="#" class="open_navigation_file"></a>
 					<div class="icon">
-						<span class="cloud dropbox"><i class="fa fa-dropbox"></i><i class="info fa fa-info"></i></span>
-						<span class="file-type"><i class="fa fa-file-word-o"></i></span>
+						<span class="cloud dropbox"><i class="fa fa-dropbox"></i></span>
 					</div>
 					<div class="describe">
 						<div>
@@ -288,8 +288,7 @@
 				<div class="file">
 					<a href="#" class="open_navigation_file"></a>
 					<div class="icon">
-						<span class="cloud google"><i class="fa fa-google"></i><i class="info fa fa-info"></i></span>
-						<span class="file-type"><i class="fa fa-file-word-o"></i></span>
+						<span class="cloud google"><i class="fa fa-google"></i></span>
 					</div>
 					<div class="describe">
 						<div>
@@ -300,8 +299,7 @@
 				<div class="file">
 					<a href="#" class="open_navigation_file"></a>
 					<div class="icon">
-							<span class="cloud dropbox"><i class="fa fa-dropbox"></i><i class="info fa fa-info"></i></span>
-							<span class="file-type"><i class="fa fa-file-word-o"></i></span>
+							<span class="cloud dropbox"><i class="fa fa-dropbox"></i></span>
 					</div>
 					<div class="describe">
 						<div>
@@ -312,8 +310,7 @@
 				<div class="file">
 					<a href="#" class="open_navigation_file"></a>
 					<div class="icon">
-						<span class="cloud google"><i class="fa fa-google"></i><i class="info fa fa-info"></i></span>
-						<span class="file-type"><i class="fa fa-file-word-o"></i></span>
+						<span class="cloud google"><i class="fa fa-google"></i></span>
 					</div>
 					<div class="describe">
 						<div>
@@ -377,9 +374,11 @@
 </div>
 
 <div id="add-file-form">
-	Dodaj pliki do bazy. Złap i upuść na szary obszar
-	<div class="form"></div>
-	<a href="#" class="close-window"><i class="fa fa-times"></i> Zamknij okno</a>
+	<div class="window">
+		<a href="#" class="close-window"><i class="fa fa-times-circle"></i></a>
+		Dodaj pliki do bazy. Złap i upuść na szary obszar
+		<div class="form"></div>
+	</div>
 </div>
 
 <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>

@@ -24,8 +24,6 @@ $(document).ready(function() {
 		$("#navigation #wrapper, #navigation_right #wrapper").mCustomScrollbar({
 			scrollbarPosition:"outside"
 		});
-
-
 	});
 })(jQuery);
 
@@ -61,7 +59,7 @@ $('textarea').tagsInput();
 
 
 $(".close-window" ).click(function() {
-	$('#add-view-form, #add-tag-form').hide();
+	$('#add-view-form, #add-tag-form, #add-file-form').hide();
 });
 
 $(".add-tag").click(function() {
@@ -72,6 +70,18 @@ $(".add-view").click(function() {
 	$('#add-view-form').css('display', 'block');
 });
 
+$( "#add-file" ).click(function() {
+  	$('#add-file-form').css('display', 'block');
+});
+
+$( ".search .button button[type=submit]").click(function() {
+  	$('.search .select').toggleClass('open-search');
+		$('.search button[type=submit]').toggleClass('button-hover');
+});
+
+$( "#add-file" ).click(function() {
+  	$('#add-file-form').css('display', 'block');
+});
 
 $( "#view_list" ).click(function() {
 	$('#files').toggleClass().addClass('list');
@@ -104,17 +114,7 @@ $( ".close_navigation_file" ).click(function() {
   }, 300);
 });
 
-$( "#add-file" ).click(function() {
-  $( "#add-file-form" ).animate({
-	 right: 10
- }, 300);
-});
 
-$( ".close-window" ).click(function() {
-  $( "#add-file-form" ).animate({
-	 right: -400
- }, 300);
-});
 
 $('.hamburger').click(function() {
 	 var hidden = $('#navigation').data('hidden');
