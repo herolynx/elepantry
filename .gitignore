@@ -5,8 +5,8 @@ test/temp
 .sass-cache
 app/vendor
 .tmp
-test/scripts/
+web/test/scripts/
 .bowerrc
 jest_preprocess_cache
 coverage
-app/styles/*.css
+web/app/styles/*.css
