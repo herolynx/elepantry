@@ -1,17 +1,60 @@
 import React from 'react';
+import Reflux from 'reflux';
 
-export default class ResourceMenu extends React.Component {
+import RosourceMenuActions from './resource-menu-actions';
+import GoogleDrive from '../../domain/storage/google-drive-store';
 
-  constructor(props) {
-    super(props);
-  }
+let resourceMenu = React.createClass({
 
-  render () {
-    return(
+  componentDidMount: function() {
+    this.unsubscribe = RosourceMenuActions.resourceChosen.listen(this.onResourceChosen);
+  },
+
+  componentWillUnmount: function() {
+    this.unsubscribe();
+  },
+
+  getInitialState: function() {
+    return {resource: undefined, show: false};
+  },
+
+  onResourceChosen: function(resource) {
+    console.debug('Resource menu - showing: ', resource);
+    let newState = this.state;
+    newState.resource = resource;
+    newState.show = true;
+    this.setState(newState);
+  },
+
+  onCloseClicked: function(event) {
+    event.preventDefault();
+    console.debug('Resource menu - hidding');
+    let newState = this.state;
+    newState.show = false;
+    this.setState(newState);
+  },
+
+  onDownloadClicked: function(event) {
+    event.preventDefault();
+    console.debug('Download resource: ', this.state.resource);
+    window.open(this.state.resource.downloadUrl);
+  },
+
+  onViewClicked: function(event) {
+    event.preventDefault();
+    console.debug('View resource: ', this.state.resource);
+    window.open(this.state.resource.previewUrl);
+  },
+
+  render: function() {
+    if (!this.state.show) {return (
+        <div/>
+      );}
+    return (
       <section id="navigation_right" className="view">
         <div className="header">
           <div className="row view">
-            <h2>Zdjęcia z wakacji</h2>
+            <h2>{this.state.resource.name}</h2>
           </div>
           <div className="row add">
             <a href="#" className="add-tag">
@@ -181,18 +224,18 @@ export default class ResourceMenu extends React.Component {
         <div className="action">
           <ul>
             <li>
-              <a href="#" title="Close" alt="Close" className="close_navigation_view">
+              <a href="#" title="View" alt="View" onTouchTap={this.onViewClicked}>
+                <i className="fa fa-eye"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Download" alt="Download" onTouchTap={this.onDownloadClicked}>
+                <i className="fa fa-cloud-download"></i>
+              </a>
+            </li>
+            <li>
+              <a title="Close" alt="Close" className="close_navigation_view" onTouchTap={this.onCloseClicked}>
                 <i className="fa fa-times"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" title="Edit" alt="Edit">
-                <i className="fa fa-pencil"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" title="Delete" alt="Delete">
-                <i className="fa fa-trash-o"></i>
               </a>
             </li>
           </ul>
@@ -201,4 +244,6 @@ export default class ResourceMenu extends React.Component {
     );
   }
 
-}
+});
+
+export default resourceMenu;
