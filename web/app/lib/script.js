@@ -9,8 +9,6 @@ $(document).ready(function() {
 		var heighWrapperFile = heightNavigation - heightHeaderFile - heightAction;
 		var heighWrapperView = heightNavigation - heightHeaderView - heightAction - 10;
 
-		console.log(heightHeaderFile, heightHeaderView)
-
 		$('#navigation_right.file #wrapper').css('height', heighWrapperFile);
 		$('#navigation_right.view #wrapper').css('height', heighWrapperView);
 	});
