@@ -1,15 +1,90 @@
 import React from 'react';
+import Reflux from 'reflux';
 
 import CurrentUserBadge from '../security/current-user-badge';
+import SView from '../../domain/views/storage-view';
+import DView from '../../domain/views/resource-view';
+import DViewActions from '../../domain/views/resource-view-actions';
 
-export default class ViewsMenu extends React.Component {
+let viewsMenu = React.createClass({
 
-  constructor(props) {
-    super(props);
-  }
+  mixins: [Reflux.ListenerMixin],
 
-  render () {
-    return(
+  getInitialState: function() {
+    return {
+      sViews: [],
+      dViews: []
+    };
+  },
+
+  componentDidMount: function() {
+    // DView.createView({name: 'SiFi books', select: ['si-fi', 'social', 'book'], orderBy: ['mobi', 'pdf']});
+    // DView.createView({name: 'Fantasy', select: ['fantasy'], orderBy: ['tolkien', 'sapkowski']});
+    this.sviewUnsubscribe = SView.listen(this.onSViews);
+    SView.getViews();
+    this.dviewUnsubscribe = DView.listen(this.onDViews);
+    DView.getViews();
+  },
+
+  componentWillUnmount: function() {
+    this.sviewUnsubscribe();
+    this.dviewUnsubscribe();
+  },
+
+  onDViews: function(dViews) {
+    console.log('onDViews', dViews);
+    let viewItems = dViews.map(view => {
+      return this.viewItem(view);
+    });
+    let state = this.state;
+    state.dViews = viewItems;
+    this.setState(state);
+  },
+
+  onDeleteViewClick: function(view) {
+    console.debug('Deleting view: ', view);
+    DViewActions.removeView(view);
+  },
+
+  viewItem: function(view) {
+    let onDelete = () => this.onDeleteViewClick(view);
+    return (
+      <li key={view.id}>
+        <a href="#" className="open_navigation_view">{view.name}</a>
+        <a href="#" title="Delete" className="delete" onTouchTap={onDelete}>
+          <i className="fa fa-trash-o"></i>
+        </a>
+      </li>
+    );
+  },
+
+  onSViews: function(sViews) {
+    console.log('onSViews', sViews);
+    let storageItems = sViews.map(storage => {
+      return this.storageItem(storage);
+    });
+    let state = this.state;
+    state.sViews = storageItems;
+    this.setState(state);
+  },
+
+  storageItem: function(storage) {
+    let status = storage.connected
+      ? <i className="small fa fa-check-circle-o"></i>
+      : <i class="small fa fa-times-circle-o"></i>;
+    return (
+      <li className="active" key={storage.id}>
+        <a href="#">
+          <i className={`fa ${storage.icon}`}></i>
+          {storage.name}
+          {status}
+        </a>
+      </li>
+    );
+  },
+
+  render: function() {
+    return (
       <section id="navigation">
         <button className="hamburger hamburger--htx">
           <span>toggle menu</span>
@@ -17,97 +92,15 @@ export default class ViewsMenu extends React.Component {
         <CurrentUserBadge/>
         <div className="row add">
           <a href="#" className="add-view">
-            <i className="fa fa-plus"></i>Dodaj widok</a>
+            <i className="fa fa-plus"></i>Add view</a>
         </div>
         <div id="wrapper">
           <nav>
             <ul>
-              <li className="active">
-                <a href="#">
-                  <i className="fa fa-google"></i>
-                  Google Drive
-                  <i className="small fa fa-check-circle-o"></i>
-                </a>
-              </li>
-              <li >
-                <a href="#">
-                  <i className="fa fa-dropbox"></i>DropBox
-                  <i className="small fa fa-check-circle-o"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-cloud"></i>One Drive
-                  <i className="small fa fa-times-circle-o"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-amazon"></i>Amazon Drive
-                  <i className="small fa fa-times-circle-o"></i>
-                </a>
-              </li>
+              {this.state.sViews}
             </ul>
             <ul>
-              <li>
-                <a href="#">
-                  <b>Nieotagowane</b>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Filmy</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Muzyka</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Książki</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Dokumenty</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Zdjęcia</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Wspolne</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Marcinek</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Wakacje 2014</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Ważne</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Stare</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Rodzice</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Wycieczki</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Marcinek</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Wakacje 2014</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Ważne</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Stare</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Rodzice</a>
-              </li>
-              <li>
-                <a href="#" className="open_navigation_view">Wycieczki</a>
-              </li>
+              {this.state.dViews}
             </ul>
           </nav>
         </div>
@@ -115,4 +108,6 @@ export default class ViewsMenu extends React.Component {
     );
   }
 
-}
+});
+
+export default viewsMenu;

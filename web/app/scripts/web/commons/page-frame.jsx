@@ -4,6 +4,8 @@ import StorageFilter from './storage-filter';
 import PageMenu from './page-menu';
 import ViewsMenu from '../views/views-menu';
 import ResourceMenu from '../views/resource-menu';
+import AddView from '../views/add-view';
+import AddTags from '../views/add-tags';
 
 export default class PageFrame extends React.Component {
 
@@ -19,6 +21,8 @@ export default class PageFrame extends React.Component {
             {this.props.children}
           </div>
         </section>
+        <AddView/>
+        <AddTags/>
       </div>
     );
   }
