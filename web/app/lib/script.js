@@ -70,6 +70,9 @@ $(".add-view").click(function() {
 	$('#add-view-form').css('display', 'block');
 });
 
+$("#add-view-close").click(function() {
+	$('#add-view-form').hide();
+});
 
 $( "#view_list" ).click(function() {
 	$('#files').toggleClass().addClass('list');
@@ -95,6 +98,12 @@ $( ".open_navigation_file" ).click(function() {
 	  right: 0
   }, 300);
 });
+
+var showTagsMenu = function() {
+	$( "#navigation_right" ).animate({
+		right: 0
+	}, 300);
+}
 
 $( ".close_navigation_file" ).click(function() {
   $( "#navigation_right.file" ).animate({

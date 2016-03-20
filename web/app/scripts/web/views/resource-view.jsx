@@ -5,7 +5,6 @@ import GoogleDrive from '../../domain/storage/google-drive-store';
 
 import Resource from './resource';
 
-
 /**
 * Create view for given resource
 * @param resource resource to be displayed

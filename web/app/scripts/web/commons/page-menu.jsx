@@ -12,13 +12,7 @@ export default class PageMenu extends React.Component {
         <div className="content">
           <div className="search">
             <div>
-              <input placeholder="Szukaj"/>
-            </div>
-            <div>
-              <select>
-                <option value="1">Tagi</option>
-                <option value="2">Pliki</option>
-              </select>
+              <input placeholder="Search..."/>
             </div>
             <div>
               <button type="submit">

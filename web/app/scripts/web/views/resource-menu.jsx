@@ -15,7 +15,7 @@ let resourceMenu = React.createClass({
   },
 
   getInitialState: function() {
-    return {resource: undefined, show: false};
+    return {resource: {name: ''}};
   },
 
   onResourceChosen: function(resource) {
@@ -47,9 +47,6 @@ let resourceMenu = React.createClass({
   },
 
   render: function() {
-    if (!this.state.show) {return (
-        <div/>
-      );}
     return (
       <section id="navigation_right" className="view">
         <div className="header">
@@ -58,11 +55,11 @@ let resourceMenu = React.createClass({
           </div>
           <div className="row add">
             <a href="#" className="add-tag">
-              <i className="fa fa-plus"></i>Dodaj tagi</a>
+              <i className="fa fa-plus"></i>Add tags</a>
           </div>
           <div className="row search">
             <div>
-              <input placeholder="Szukaj w tagach"/>
+              <input placeholder="Search..."/>
             </div>
             <div>
               <button type="submit">
@@ -234,7 +231,7 @@ let resourceMenu = React.createClass({
               </a>
             </li>
             <li>
-              <a title="Close" alt="Close" className="close_navigation_view" onTouchTap={this.onCloseClicked}>
+              <a href="#" title="Close" alt="Close" className="close_navigation_view" onTouchTap={this.onCloseClicked}>
                 <i className="fa fa-times"></i>
               </a>
             </li>

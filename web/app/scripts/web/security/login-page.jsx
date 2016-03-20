@@ -19,7 +19,7 @@ export default class LoginPage extends React.Component {
             <h2>Zaloguj się do serwisu używając konta:</h2>
             <ul>
               <li className="google">
-                <a className="active" onTouchTap={this.handleLogin}>
+                <a href="#" className="active" onTouchTap={this.handleLogin}>
                   <i className="fa fa-google"></i>
                   Log in with Google</a>
               </li>

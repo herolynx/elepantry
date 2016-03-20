@@ -7,6 +7,7 @@ let resource = React.createClass({
   onClick: function(event) {
     event.preventDefault();
     console.debug('Resource selected: ', this.props.resource);
+    showTagsMenu();
     RosourceMenuActions.resourceChosen(this.props.resource);
   },
 
@@ -17,7 +18,7 @@ let resource = React.createClass({
 
   render: function() {
     return (
-      <div className="file" onTouchTap={this.onClick}>
+      <div id={this.props.resource.id} key={this.props.resource.id} className="file" onTouchTap={this.onClick}>
         <a href="#" className="open_navigation_file"></a>
         <div className="icon">
           <span className="cloud google">

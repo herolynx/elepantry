@@ -61,12 +61,77 @@ let firebase = {
     return ref != undefined && dbSession != undefined;
   },
 
+  /**
+  * Save data by inserting/updating with chosen ID
+  * @param path document path
+  * @return obj data to be saved
+  */
   save: function(path, obj) {
     console.debug('Saving:', path, obj);
     db().then(ref => {
       console.debug('Saving to DB:', path, obj);
       ref.child(path).set(obj);
     });
+  },
+
+  /**
+  * Create data and generate ID for new document
+  * @param path document path
+  * @return obj data to be saved
+  */
+  create: function(path, obj) {
+    console.debug('Create:', path, obj);
+    db().then(ref => {
+      console.debug('Create in DB:', path, obj);
+      ref.child(path).push().set(obj);
+    });
+  },
+
+  /**
+  * Remove data
+  * @param path document path
+  */
+  remove: function(path) {
+    console.debug('Removing:', path);
+    db().then(ref => {
+      console.debug('Removing from DB:', path);
+      ref.child(path).remove();
+    });
+  },
+
+
+  /**
+  * Get data
+  * @param path document path
+  * @return promise with data
+  */
+  get: function(path) {
+    console.debug('Getting:', path);
+    return db().then(ref => {
+      console.debug('Getting from DB:', path);
+      return new Promise((resolve, reject) => {
+        ref.child(path).on("value", function(snapshot) {
+          resolve(snapshot.val());
+        }, function(errorObject) {
+          reject("The read failed: " + errorObject.code);
+        });
+      });
+    });
+  },
+
+  /**
+  * Convert object into array
+  * @param obj DB representation of object
+  * @return array with objects with IDs
+  */
+  toArray: function(obj) {
+    let array = [];
+    for (let id in obj) {
+      let element = obj[id];
+      element.id = id;
+      array.push(element);
+    }
+    return array;
   }
 
 };
