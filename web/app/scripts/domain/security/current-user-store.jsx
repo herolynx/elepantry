@@ -1,5 +1,7 @@
 import Reflux from 'reflux';
+
 import Google from '../drivers/google-driver';
+import UserRepo from '../repos/user';
 
 let userStore = Reflux.createStore({
   listenables: [],
@@ -15,8 +17,14 @@ let userStore = Reflux.createStore({
       return new Promise((resolve, reject) => {
         var request = gapi.client.plus.people.get({'userId': 'me'});
         request.execute(resp => {
-          console.log('Current user:', resp.displayName, resp.image.url);
-          resolve({name: resp.displayName, image: resp.image.url});
+          let currentUser = {
+            id: resp.id,
+            name: resp.displayName,
+            email: resp.emails[0].value,
+            image: resp.image.url,
+          };
+          console.log('Current user info loaded:', currentUser);
+          resolve(currentUser);
         });
       });
     });

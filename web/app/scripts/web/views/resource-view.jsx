@@ -1,7 +1,10 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
+
 import GoogleDrive from '../../domain/storage/google-drive-store';
+
 import Resource from './resource';
+
 
 /**
 * Create view for given resource

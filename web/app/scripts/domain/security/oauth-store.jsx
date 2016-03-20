@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
-import OauthActions from './oauth-actions';
 import Cookie from 'react-cookie';
+
+import OauthActions from './oauth-actions';
 import Google from '../drivers/google-driver';
 
 let sessionName = 'elepantryId';

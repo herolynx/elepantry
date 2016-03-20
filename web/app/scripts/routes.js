@@ -7,6 +7,8 @@ import LoginPage from './web/security/login-page';
 import ResourceView from './web/views/resource-view';
 import AuthStore from './domain/security/oauth-store';
 import AuthActions from './domain/security/oauth-actions';
+import UserRepo from './domain/repos/user';
+import CurrentUser from './domain/security/current-user-store';
 
 function requireAuth(nextState, replaceState) {
   console.debug('requireAuth: ', nextState.location, AuthStore.isLoggedIn());
@@ -21,8 +23,18 @@ function requireAuth(nextState, replaceState) {
 
 AuthActions.loginCompleted.listen(function(loggedIn) {
   console.log('User logged in: ', loggedIn);
-  //TODO change this to some react redirect action when bloody API for it is found!!!
-  window.location = '/';
+  CurrentUser.load().then(user => {
+    console.log('User logged in - saving info about logging');
+    user.lastLoginDate = new Date().toString();
+    UserRepo.save(user);
+    //TODO change this to some react redirect action when bloody API for it is found!!!
+    //TODO when nasty workaround is removed then timeout must be removed too tp prevent reload of the whole page!!!
+    //note: reload of the whole page causes that save operation may not finish thus timeout needed
+    setTimeout(
+      () => window.location = '/',
+      4000
+    );
+  });
 });
 
 let routes = (
