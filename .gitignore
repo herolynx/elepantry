@@ -10,3 +10,4 @@ web/test/scripts/
 jest_preprocess_cache
 coverage
 web/app/styles/*.css
+*.log

@@ -3,8 +3,9 @@ import Reflux from 'reflux';
 
 import CurrentUserBadge from '../security/current-user-badge';
 import SView from '../../domain/views/storage-view';
-import DView from '../../domain/views/resource-view';
+import DView from '../../domain/views/dynamic-view';
 import DViewActions from '../../domain/views/resource-view-actions';
+import ViewActions from './views-actions';
 
 let viewsMenu = React.createClass({
 
@@ -18,8 +19,6 @@ let viewsMenu = React.createClass({
   },
 
   componentDidMount: function() {
-    // DView.createView({name: 'SiFi books', select: ['si-fi', 'social', 'book'], orderBy: ['mobi', 'pdf']});
-    // DView.createView({name: 'Fantasy', select: ['fantasy'], orderBy: ['tolkien', 'sapkowski']});
     this.sviewUnsubscribe = SView.listen(this.onSViews);
     SView.getViews();
     this.dviewUnsubscribe = DView.listen(this.onDViews);
@@ -48,9 +47,10 @@ let viewsMenu = React.createClass({
 
   viewItem: function(view) {
     let onDelete = () => this.onDeleteViewClick(view);
+    let onViewChange = () => this.onChangeViewClicked(view);
     return (
       <li key={view.id}>
-        <a href="#" className="open_navigation_view">{view.name}</a>
+        <a href="#" className="open_navigation_view" onTouchTap={onViewChange}>{view.name}</a>
         <a href="#" title="Delete" className="delete" onTouchTap={onDelete}>
           <i className="fa fa-trash-o"></i>
         </a>
@@ -72,15 +72,21 @@ let viewsMenu = React.createClass({
     let status = storage.connected
       ? <i className="small fa fa-check-circle-o"></i>
       : <i class="small fa fa-times-circle-o"></i>;
+    let onViewChange = () => this.onChangeViewClicked(storage);
     return (
       <li className="active" key={storage.id}>
-        <a href="#">
+        <a href="#" onTouchTap={onViewChange}>
           <i className={`fa ${storage.icon}`}></i>
           {storage.name}
           {status}
         </a>
       </li>
     );
+  },
+
+  onChangeViewClicked: function(view) {
+    console.debug('Changing view', view);
+    ViewActions.showViewResources(view);
   },
 
   render: function() {

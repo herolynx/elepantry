@@ -113,6 +113,7 @@ let firebase = {
         ref.child(path).on("value", function(snapshot) {
           resolve(snapshot.val());
         }, function(errorObject) {
+          console.error("The read failed: " + errorObject.code, errorObject);
           reject("The read failed: " + errorObject.code);
         });
       });

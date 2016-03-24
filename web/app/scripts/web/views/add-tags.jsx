@@ -1,6 +1,23 @@
 import React from 'react';
 
+import TagActions from '../../domain/views/tags-actions';
+
 let addResourceTags = React.createClass({
+
+  getInitialState: function() {
+    return {tags: ''};
+  },
+
+  onSaveClick: function(event) {
+    event.preventDefault();
+    console.debug('Adding tags', this.state.tags);
+    TagActions.createTag(this.state.tags);
+    this.setState({tags: ''});
+  },
+
+  handleChange: function(event) {
+    this.setState({tags: event.target.value});
+  },
 
   render: function() {
     return (
@@ -13,11 +30,11 @@ let addResourceTags = React.createClass({
       					Tags:
       				</label>
       				<fieldset>
-      					<textarea></textarea>
+      					<input id="add-tag-input" value={this.state.tags} onChange={this.handleChange} />
       				</fieldset>
       			</li>
       			<li>
-      				<button type="submit"><i className="fa fa-hdd-o"></i> Save</button>
+      				<button id="add-tag-close" type="submit" onTouchTap={this.onSaveClick}><i className="fa fa-hdd-o"></i> Save</button>
       			</li>
       		</ul>
       	</div>
