@@ -14,7 +14,7 @@ let resourceView = Reflux.createStore({
   * Create view
   */
   createView: function(view) {
-    console.debug('Adding view', view);
+    console.debug('Adding dynamic view', view);
     ViewRepo.create(view);
     this.getViews();
   },
@@ -23,7 +23,7 @@ let resourceView = Reflux.createStore({
   * Remove view
   */
   removeView: function(view) {
-    console.debug('Removing view', view);
+    console.debug('Removing dynamic view', view);
     ViewRepo.remove(view);
     storeViews = _.filter(storeViews, item => item.id != view.id);
     this.trigger(storeViews);
@@ -34,7 +34,7 @@ let resourceView = Reflux.createStore({
   * @return promise of views
   */
   getViews: function() {
-    console.debug('Getting views');
+    console.debug('Getting dynamic views');
     return ViewRepo.get().then(views => {
       storeViews = views;
       this.trigger(storeViews);

@@ -33,7 +33,7 @@ $('select').niceSelect();
 
 // ADD TAG
 
-$('textarea').tagsInput();
+// $('textarea').tagsInput();
 
 // HAMBURGER
 (function() {
@@ -64,6 +64,10 @@ $(".close-window" ).click(function() {
 
 $(".add-tag").click(function() {
 	$('#add-tag-form').css('display', 'block');
+});
+
+$("#add-tag-close").click(function() {
+	$('#add-tag-form').hide();
 });
 
 $(".add-view").click(function() {

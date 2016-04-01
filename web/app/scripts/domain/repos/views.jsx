@@ -8,6 +8,18 @@ let currentUser = CurrentUser.load();
 let viewsRepo = {
 
   /**
+  * Update view
+  * @param view data to be saved
+  * @return promise with current user
+  */
+  save: function(view) {
+    console.debug('Saving view', view);
+    return currentUser.then(user => {
+      db.save(`${type}/${user.id}/${view.id}`, view);
+    });
+  },
+
+  /**
   * Save view
   * @param view data to be saved
   * @return promise with current user
@@ -31,10 +43,23 @@ let viewsRepo = {
     });
   },
 
+  /**
+  * Get view
+  * @param id resourcce id
+  * @return promise with data
+  */
+  find: function(id) {
+    console.debug('Find view', id);
+    return currentUser.then(user => {
+      return db.get(`${type}/${user.id}/${id}`).then(view => {
+        console.debug('Find view', id, view);
+        return view;
+      });
+    });
+  },
 
   /**
   * Get data
-  * @param path document path
   * @return promise with data
   */
   get: function() {

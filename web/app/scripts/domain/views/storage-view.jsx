@@ -7,6 +7,7 @@ let storages = [
     type: 'google-drive',
     icon: 'fa-google',
     connected: true, //always connected since main account
+    static: true,
     select: [],
     groupBy: []
   }
