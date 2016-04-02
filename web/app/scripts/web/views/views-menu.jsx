@@ -6,6 +6,7 @@ import SView from '../../domain/views/storage-view';
 import DView from '../../domain/views/dynamic-view';
 import DViewActions from '../../domain/views/resource-view-actions';
 import ViewActions from './views-actions';
+import ViewStore from '../../domain/views/view-store';
 
 let viewsMenu = React.createClass({
 
@@ -23,11 +24,13 @@ let viewsMenu = React.createClass({
     SView.getViews();
     this.dviewUnsubscribe = DView.listen(this.onDViews);
     DView.getViews();
+    this.onAnyViewChangeUnsubscribe = ViewStore.listen(() => DView.getViews());
   },
 
   componentWillUnmount: function() {
     this.sviewUnsubscribe();
     this.dviewUnsubscribe();
+    this.onAnyViewChangeUnsubscribe();
   },
 
   onDViews: function(dViews) {
