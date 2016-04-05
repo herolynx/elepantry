@@ -9,7 +9,14 @@ let pageMenu = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
   getInitialState: function() {
-    return {id: 'google-drive', name: 'Google Drive', static: true};
+    return {
+      view: {
+        id: 'google-drive',
+        name : 'Google Drive',
+        static : true
+      },
+      searchText: ''
+    };
   },
 
   componentDidMount: function() {
@@ -22,22 +29,30 @@ let pageMenu = React.createClass({
 
   onViewChanged: function(view) {
     console.debug('View changed: ', view);
-    this.setState({static:false});
-    this.setState(view);
+    if (view.static == undefined) {
+      //
+      view.static = false;
+    }
+    let newState = this.state;
+    newState.view = view;
+    this.setState(newState);
   },
 
   tagsOption: function(view, select) {
-    console.debug('Creating select tags option for view', view, select);
+    // console.debug('Creating select tags option for view', view, select);
     let show = () => {
       if(select) {
-        MenuActions.viewSelect(this.state);
-      }
-      else {
-        MenuActions.viewGroupBy(this.state);
+        //
+        MenuActions.viewSelect(view);
+      } else {
+        //
+        MenuActions.viewGroupBy(view);
       }
       showTagsMenu();
     };
-    let name = select ? 'Select' : 'Group by';
+    let name = select
+      ? 'Select'
+      : 'Group by';
     let selectOption = (view.static != undefined && view.static)
       ? <div/>
       : <li key={name}>
@@ -46,15 +61,28 @@ let pageMenu = React.createClass({
     return (selectOption);
   },
 
+  handleSearchChange: function(event) {
+    let newState = this.state;
+    if(newState.searchAction != undefined) {
+      //clear previously scheduled search event
+      clearTimeout(newState.searchAction);
+    }
+    newState.searchText = event.target.value;
+    console.debug('Search text changed', newState.searchText);
+    //make delay to not overflow with search events
+    newState.searchAction = setTimeout(() => ViewActions.searchTextChange(newState.searchText), 500);
+    this.setState(newState);
+  },
+
   render: function() {
-    let selectOption = this.tagsOption(this.state, true);
-    let groupByOption = this.tagsOption(this.state, false);
+    let selectOption = this.tagsOption(this.state.view, true);
+    let groupByOption = this.tagsOption(this.state.view, false);
     return (
       <div id="top-bar">
         <div className="content">
           <div className="search">
             <div>
-              <input placeholder="Search..."/>
+              <input placeholder="Search..." value={this.state.searchText} onChange={this.handleSearchChange}/>
             </div>
             <div>
               <button type="submit">
@@ -64,8 +92,8 @@ let pageMenu = React.createClass({
           </div>
           <div className="tags">
             <ul>
-              <li key={this.state.name}>
-                <a href="#">{this.state.name}</a>
+              <li key={this.state.view.name}>
+                <a href="#">{this.state.view.name}</a>
               </li>
               {selectOption}
               {groupByOption}

@@ -28,6 +28,7 @@ function connect(resolve, reject) {
         dbSession = undefined;
       }
     });
+    //pop-up authentication
     ref.authWithOAuthPopup(CONF.oauth, function(error, authData) {
       if (error) {
         console.log("DB - Login Failed!", error.code, error);
@@ -99,7 +100,6 @@ let firebase = {
     });
   },
 
-
   /**
   * Get data
   * @param path document path
@@ -111,6 +111,34 @@ let firebase = {
       console.debug('Getting from DB:', path);
       return new Promise((resolve, reject) => {
         ref.child(path).on("value", function(snapshot) {
+          resolve(snapshot.val());
+        }, function(errorObject) {
+          console.error("The read failed: " + errorObject.code, errorObject);
+          reject("The read failed: " + errorObject.code);
+        });
+      });
+    });
+  },
+
+  /**
+  * Get chosen page of data
+  * @param path document path
+  * @param start start index
+  * @param limit number of results
+  * @param orderBy order by column name
+  * @return promise with data
+  */
+  page: function(path, start, limit, orderBy) {
+    console.debug('Getting page:', path, start, limit, orderBy);
+    return db().then(ref => {
+      console.debug('Getting page from DB:', path, start, limit, orderBy);
+      return new Promise((resolve, reject) => {
+        let dbRef = ref.child(path).orderByKey();
+        if (start != undefined) {
+          //start at key document position
+          dbRef = dbRef.startAt(start)
+        }
+        dbRef.limitToFirst(limit).once("value", function(snapshot) {
           resolve(snapshot.val());
         }, function(errorObject) {
           console.error("The read failed: " + errorObject.code, errorObject);

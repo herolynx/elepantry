@@ -135,7 +135,13 @@ let resourceMenu = React.createClass({
   onTagDeleteClicked: function(tag) {
     event.preventDefault();
     console.debug('Resource menu - remove tag: ', this.state.view, this.state.allTags, tag);
-    if (this.state.view) {ViewTagsStore.removeTag(tag);} else {ResourceStore.removeTag(tag);}
+    if (this.state.view) {
+      //
+      ViewTagsStore.removeTag(tag);
+    } else {
+      //
+      ResourceStore.removeTag(tag);
+    }
   },
 
   onTagCreateClicked: function(event) {
@@ -158,7 +164,10 @@ let resourceMenu = React.createClass({
   filterTags: function() {
     console.debug('Filtering tags', this.state.allTags, this.state.filter);
     let newState = this.state;
-    newState.tags = _.chain(this.state.allTags).filter(tag => tag.startsWith(newState.filter)).map(tag => this.tagView(tag)).value();
+    newState.tags = _.chain(this.state.allTags)
+      .filter(tag => tag.indexOf(newState.filter) != -1)
+      .map(tag => this.tagView(tag))
+      .value();
     this.setState(newState);
   },
 
@@ -193,9 +202,9 @@ let resourceMenu = React.createClass({
             <h2>{this.state.name}</h2>
           </div>
           <div className="row add">
-              <a href="#" className="add-tag" onTouchTap={this.onTagCreateClicked}>
-                <i className="fa fa-plus"></i>Add tags</a>
-            </div>
+            <a href="#" className="add-tag" onTouchTap={this.onTagCreateClicked}>
+              <i className="fa fa-plus"></i>Add tags</a>
+          </div>
           <div className="row search">
             <div>
               <input placeholder="Search..." value={this.state.filter} onChange={this.handleFilterChange}/>

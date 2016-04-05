@@ -19,7 +19,6 @@ let resourceRepo = {
     });
   },
 
-
   /**
   * Remove resource
   * @param resource data to be removed
@@ -49,18 +48,19 @@ let resourceRepo = {
 
   /**
   * Get resource
+  * @param start start index
+  * @param maxResults number of results
   * @return promise with data
   */
-  get: function() {
+  get: function(start = undefined, maxResults = 100) {
     console.debug('Getting resources');
     return currentUser.then(user => {
-      return db.get(`${type}/${user.id}`).then(resourcesObj => {
+      return db.page(`${type}/${user.id}`, start, maxResults, 'name').then(resourcesObj => {
         console.debug('Getting resources', resourcesObj);
         return db.toArray(resourcesObj);
       });
     });
   }
-
 };
 
 export default resourceRepo;
